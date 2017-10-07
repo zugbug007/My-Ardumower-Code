@@ -85,7 +85,7 @@ Mower::Mower(){
   dropcontact                = 1;          // contact 0-openers 1-closers                                                                              Dropsensor - Kontakt 0-Öffner - 1-Schließer betätigt gegen GND
   
   // ------ rain ------------------------------------
-  rainUse                    = 1;          // use rain sensor?
+  rainUse                    = 0;          // use rain sensor?
   
   // ------ sonar ------------------------------------
   sonarUse                   = 1;          // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
@@ -121,7 +121,7 @@ Mower::Mower(){
   lawnSensorUse     = 0;                   // use capacitive lawn Sensor
   
   // ------  IMU (compass/accel/gyro) ----------------------
-  imuUse                     = 1;          // use IMU?
+  imuUse                     = 0;          // use IMU?
   imuCorrectDir              = 0;          // correct direction by compass?
   imuDirPID.Kp               = 5.0;        // direction PID controller
   imuDirPID.Ki               = 1.0;
