@@ -25,7 +25,7 @@ String Robot::waitStringConsole() {
 
 
 void Robot::printInfo(Stream &s){
-  
+
   /*Console.print(millis()/1000);
   Console.print(",");
   Console.print(motorMowRPMSet);
@@ -38,19 +38,19 @@ void Robot::printInfo(Stream &s){
 
   if (consoleMode == CONSOLE_OFF) {
   } else {
-  Streamprint(s, "t%6u ", (millis()-stateStartTime)/1000);  
-  Streamprint(s, "L%3u ", loopsPerSec);  
-  //Streamprint(s, "r%4u ", freeRam());  
-  Streamprint(s, "m%1d ", consoleMode);			    
-  Streamprint(s, "%4s ", stateNames[stateCurr]);			    
+  Streamprint(s, "t%6u ", (millis()-stateStartTime)/1000);
+  Streamprint(s, "L%3u ", loopsPerSec);
+  //Streamprint(s, "r%4u ", freeRam());
+  Streamprint(s, "m%1d ", consoleMode);
+  Streamprint(s, "%4s ", stateNames[stateCurr]);
   if (consoleMode == CONSOLE_PERIMETER){
     Streamprint(s, "sig min %4d max %4d avg %4d mag %5d qty %3d",
       (int)perimeter.getSignalMin(0), (int)perimeter.getSignalMax(0), (int)perimeter.getSignalAvg(0),
       perimeterMag, (int)(perimeter.getFilterQuality(0)*100.0));
-    Streamprint(s, "  in %2d  cnt %4d  on %1d\r\n",  
-      (int)perimeterInside, perimeterCounter, (int)(!perimeter.signalTimedOut(0)) );      
-  } else {  
-    if (odometryUse) Streamprint(s, "rpm %4d %4d ", (int)motorLeftRpmCurr, (int)motorRightRpmCurr);   
+    Streamprint(s, "  in %2d  cnt %4d  on %1d\r\n",
+      (int)perimeterInside, perimeterCounter, (int)(!perimeter.signalTimedOut(0)) );
+  } else {
+    if (odometryUse) Streamprint(s, "rpm %4d %4d ", (int)motorLeftRpmCurr, (int)motorRightRpmCurr);
     Streamprint(s, "set %4d %4d ", (int)motorLeftSpeedRpmSet, (int)motorRightSpeedRpmSet);
     if (consoleMode == CONSOLE_SENSOR_VALUES){
       // sensor values
@@ -58,10 +58,10 @@ void Robot::printInfo(Stream &s){
       Streamprint(s, "bum %4d %4d ", bumperLeft, bumperRight);
       Streamprint(s, "dro %4d %4d ", dropLeft, dropRight);                                                                                      // Dropsensor - Absturzsensor
       Streamprint(s, "son %4d %4d %4d ", sonarDistLeft, sonarDistCenter, sonarDistRight);
-      Streamprint(s, "yaw %3d ", (int)(imu.ypr.yaw/PI*180.0));  
+      Streamprint(s, "yaw %3d ", (int)(imu.ypr.yaw/PI*180.0));
       Streamprint(s, "pit %3d ", (int)(imu.ypr.pitch/PI*180.0));
       Streamprint(s, "rol %3d ", (int)(imu.ypr.roll/PI*180.0));
-      if (perimeterUse) Streamprint(s, "per %3d ", (int)perimeterInside);              
+      if (perimeterUse) Streamprint(s, "per %3d ", (int)perimeterInside);
       if (lawnSensorUse) Streamprint(s, "lawn %3d %3d ", (int)lawnSensorFront, (int)lawnSensorBack);
     } else {
       // sensor counters
@@ -69,44 +69,44 @@ void Robot::printInfo(Stream &s){
       Streamprint(s, "bum %4d %4d ", bumperLeftCounter, bumperRightCounter);
       Streamprint(s, "dro %4d %4d ", dropLeftCounter, dropRightCounter);                                                                      // Dropsensor - Absturzsensor
       Streamprint(s, "son %3d ", sonarDistCounter);
-      Streamprint(s, "yaw %3d ", (int)(imu.ypr.yaw/PI*180.0));        
+      Streamprint(s, "yaw %3d ", (int)(imu.ypr.yaw/PI*180.0));
       Streamprint(s, "pit %3d ", (int)(imu.ypr.pitch/PI*180.0));
       Streamprint(s, "rol %3d ", (int)(imu.ypr.roll/PI*180.0));
-      //Streamprint(s, "per %3d ", perimeterLeft);          
-      if (perimeterUse) Streamprint(s, "per %3d ", perimeterCounter);                  
+      //Streamprint(s, "per %3d ", perimeterLeft);
+      if (perimeterUse) Streamprint(s, "per %3d ", perimeterCounter);
       if (lawnSensorUse) Streamprint(s, "lawn %3d ", lawnSensorCounter);
-      if (gpsUse) Streamprint(s, "gps %2d ", (int)gps.satellites());            
+      if (gpsUse) Streamprint(s, "gps %2d ", (int)gps.satellites());
     }
-    Streamprint(s, "bat %2d.%01d ", (int)batVoltage, (int)((batVoltage *10) - ((int)batVoltage*10)) );       
-    Streamprint(s, "chg %2d.%01d %2d.%01d ", 
+    Streamprint(s, "bat %2d.%01d ", (int)batVoltage, (int)((batVoltage *10) - ((int)batVoltage*10)) );
+    Streamprint(s, "chg %2d.%01d %2d.%01d ",
         (int)chgVoltage, (int)((chgVoltage *10) - ((int)chgVoltage*10)),
-        (int)chgCurrent, (int)((abs(chgCurrent) *10) - ((int)abs(chgCurrent)*10))    
-      );    
-    Streamprint(s, "imu%3d ", imu.getCallCounter());  
-    Streamprint(s, "adc%3d ", ADCMan.getCapturedChannels());  
-    Streamprint(s, "%s\r\n", name.c_str());                  
+        (int)chgCurrent, (int)((abs(chgCurrent) *10) - ((int)abs(chgCurrent)*10))
+      );
+    Streamprint(s, "imu%3d ", imu.getCallCounter());
+    Streamprint(s, "adc%3d ", ADCMan.getCapturedChannels());
+    Streamprint(s, "%s\r\n", name.c_str());
   }
  }
 }
 
 
-void Robot::printMenu(){  
+void Robot::printMenu(){
   Console.println();
   Console.println(F(" MAIN MENU:"));
   Console.println(F("1=test motors"));
   Console.println(F("2=test odometry"));
   Console.println(F("3=communications menu"));
   Console.println(F("5=calibrate IMU acc next side"));
-  Console.println(F("6=calibrate IMU com start/stop"));  
+  Console.println(F("6=calibrate IMU com start/stop"));
   Console.println(F("7=delete IMU calib"));
-  Console.println(F("8=ADC calib (perimeter sender, charger must be off)"));  
-  Console.println(F("9=save user settings"));  
-	Console.println(F("c=test RTC"));  
-  Console.println(F("l=load factory settings"));  
-  Console.println(F("r=delete robot stats"));  
-  Console.println(F("x=print settings"));  
-  Console.println(F("e=delete all errors"));  
-  Console.println(F("0=exit"));  
+  Console.println(F("8=ADC calib (perimeter sender, charger must be off)"));
+  Console.println(F("9=save user settings"));
+	Console.println(F("c=test RTC"));
+  Console.println(F("l=load factory settings"));
+  Console.println(F("r=delete robot stats"));
+  Console.println(F("x=print settings"));
+  Console.println(F("e=delete all errors"));
+  Console.println(F("0=exit"));
   Console.println();
 }
 
@@ -125,9 +125,9 @@ void Robot::testOdometry(){
   char ch;
   int lastLeft = 0;
   int lastRight = 0;
-  motorLeftPWMCurr = motorSpeedMaxPwm/2; motorRightPWMCurr = motorSpeedMaxPwm/2;  
+  motorLeftPWMCurr = motorSpeedMaxPwm/2; motorRightPWMCurr = motorSpeedMaxPwm/2;
   setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
-  while (true){ 
+  while (true){
     resetIdleTime();
     if ((odometryLeft != lastLeft) || (odometryRight != lastRight)) {
       //Console.print(F("Press'f' forward, 'r' reverse, 'z' reset  "));
@@ -135,86 +135,87 @@ void Robot::testOdometry(){
       Console.print(F("left="));
       Console.print(odometryLeft);
       Console.print(F("  right="));
-      Console.println(odometryRight);              
+      Console.println(odometryRight);
       lastLeft = odometryLeft;
       lastRight = odometryRight;
     }
     delay(100);
     if (Console.available() > 0){
-      ch = (char)Console.read();            
+      ch = (char)Console.read();
       if (ch == '0') break;
       if (ch == 'f') {
-          motorLeftPWMCurr = motorSpeedMaxPwm/2; motorRightPWMCurr = motorSpeedMaxPwm/2;  
+          motorLeftPWMCurr = motorSpeedMaxPwm/2; motorRightPWMCurr = motorSpeedMaxPwm/2;
           setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
       }
       if (ch == 'r') {
-          motorLeftPWMCurr = -motorSpeedMaxPwm/2; motorRightPWMCurr = -motorSpeedMaxPwm/2;  
+          motorLeftPWMCurr = -motorSpeedMaxPwm/2; motorRightPWMCurr = -motorSpeedMaxPwm/2;
           setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
-      } 
+      }
       if (ch == 'z') {
           odometryLeft = 0; odometryRight = 0;
-      }            
+      }
       if (ch == 's') {
           motorLeftPWMCurr = 0; motorRightPWMCurr = 0;
-          setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false); 
-      }                  
-      if (ch == 'o') 
+          setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
+      }
+      if (ch == 'o')
       {
           odometryLeft = 0; odometryRight = 0;
-          motorLeftPWMCurr = motorSpeedMaxPwm/2; motorRightPWMCurr = motorSpeedMaxPwm/2;  
+          motorLeftPWMCurr = motorSpeedMaxPwm/2; motorRightPWMCurr = motorSpeedMaxPwm/2;
           setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
           while (true)
           {
             if (Console.available() > 0)
             {
-              ch = (char)Console.read();            
+              ch = (char)Console.read();
               if (ch == '0') break;
             }
-            
+
             if ((odometryLeft != lastLeft) || (odometryRight != lastRight)) {
               //Console.print(F("Press'f' forward, 'r' reverse, 'z' reset  "));
               Console.print(F("Press'f' forward, 'r' reverse, 'z' reset, 's' stop, 'o' one revolution  "));
               Console.print(F("left="));
               Console.print(odometryLeft);
               Console.print(F("  right="));
-              Console.println(odometryRight);              
+              Console.println(odometryRight);
               lastLeft = odometryLeft;
               lastRight = odometryRight;
             }
-            
+
             if ((odometryLeft >= odometryTicksPerRevolution) || (odometryRight >= odometryTicksPerRevolution))
             {
               motorLeftPWMCurr = 0; motorRightPWMCurr = 0;
               setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
               break;
             }
-          }  
+          }
       }
     }
   };
   motorLeftPWMCurr = 0; motorRightPWMCurr = 0;
-  setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);          
+  setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
 }
 
 void Robot::testRTC(){
   Console.println("reading RTC time...");
-	if (readDS1307(datetime)){    
+	if (readDS1307(datetime)){
     Console.print(F("RTC date received: "));
-    Console.println(date2str(datetime.date));  
-  }    
-	Console.println("writing new RTC time 28-02-2016 23:59...");  
-  datetime.time.hour=23;
-  datetime.time.minute=59;
+    Console.println(date2str(datetime.date));
+  }
+	Console.println("writing new RTC time 07-10-2017 20:09...");
+  // set the time here
+  datetime.time.hour=20;
+  datetime.time.minute=15;
   datetime.date.dayOfWeek=6;
-  datetime.date.day=28;
-  datetime.date.month=2;
-  datetime.date.year=2016;
-  setDS1307(datetime);	
+  datetime.date.day=07;
+  datetime.date.month=10;
+  datetime.date.year=2017;
+  setDS1307(datetime);
 	Console.println("reading RTC time...");
-	if (readDS1307(datetime)){    
+	if (readDS1307(datetime)){
     Console.print(F("RTC date received: "));
-    Console.println(date2str(datetime.date));  
-  }    
+    Console.println(date2str(datetime.date));
+  }
 }
 
 void Robot::testMotors(){
@@ -222,7 +223,7 @@ void Robot::testMotors(){
   setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
 
   Console.println(F("testing left motor (forward) half speed..."));
-  delay(1000);  
+  delay(1000);
   motorLeftPWMCurr = motorSpeedMaxPwm/2; motorRightPWMCurr = 0;
   setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
   delayInfo(5000);
@@ -230,45 +231,45 @@ void Robot::testMotors(){
   setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
 
   Console.println(F("testing left motor (reverse) full speed..."));
-  delay(1000); 
-  motorLeftPWMCurr = -motorSpeedMaxPwm; motorRightPWMCurr = 0; 
+  delay(1000);
+  motorLeftPWMCurr = -motorSpeedMaxPwm; motorRightPWMCurr = 0;
   setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
-  delayInfo(5000);  
+  delayInfo(5000);
   motorLeftPWMCurr = 0; motorRightPWMCurr = 0;
   setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
 
   Console.println(F("testing right motor (forward) half speed..."));
-  delay(1000);  
-  motorLeftPWMCurr = 0; motorRightPWMCurr= motorSpeedMaxPwm/2; 
+  delay(1000);
+  motorLeftPWMCurr = 0; motorRightPWMCurr= motorSpeedMaxPwm/2;
   setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
   delayInfo(5000);
   motorLeftPWMCurr = 0; motorRightPWMCurr = 0;
   setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
 
   Console.println(F("testing right motor (reverse) full speed..."));
-  delay(1000);    
-  motorLeftPWMCurr = 0; motorRightPWMCurr = -motorSpeedMaxPwm;      
+  delay(1000);
+  motorLeftPWMCurr = 0; motorRightPWMCurr = -motorSpeedMaxPwm;
   setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
   delayInfo(5000);
   motorLeftPWMCurr = 0; motorRightPWMCurr = 0;
-  setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);    
+  setMotorPWM(motorLeftPWMCurr, motorRightPWMCurr, false);
 }
 
-void Robot::menu(){  
-  char ch;  
-  printMenu();  
-  while(true){    
+void Robot::menu(){
+  char ch;
+  printMenu();
+  while(true){
     resetIdleTime();
     imu.update();
     if (Console.available() > 0) {
-      ch = (char)Console.read();            
+      ch = (char)Console.read();
       switch (ch){
-        case '0': 
-          return;           
-        case '1':         
+        case '0':
+          return;
+        case '1':
           testMotors();
           printMenu();
-          break;        
+          break;
         case '2':
           testOdometry();
           printMenu();
@@ -285,8 +286,8 @@ void Robot::menu(){
           printMenu();
           break;
         case '6':
-          imu.calibComStartStop();          
-          break;          
+          imu.calibComStartStop();
+          break;
         case '7':
           imu.deleteCalib();
           printMenu();
@@ -307,27 +308,27 @@ void Robot::menu(){
           printSettingSerial();
           deleteUserSettings();
           printMenu();
-          break;    
+          break;
         case 'r':
           printSettingSerial();
           deleteRobotStats();
           printMenu();
-          break;              
+          break;
         case 'x':
           printSettingSerial();
           Console.println(F("DONE"));
           printMenu();
-          break;          
+          break;
         case 'e':
           resetErrorCounters();
           setNextState(STATE_OFF, 0);
-          Console.println(F("ALL ERRORS ARE DELETED"));          
+          Console.println(F("ALL ERRORS ARE DELETED"));
           printMenu();
-          break;          
-      }            
+          break;
+      }
     }
     delay(10);
-  }  
+  }
 }
 
 
@@ -413,27 +414,27 @@ void Robot::commsMenuSelect(void) {
 
 void Robot::readSerial() {
   // serial input
-  if (Console.available() > 0) {     
+  if (Console.available() > 0) {
      char ch = (char)Console.read();
      resetIdleTime();
      switch (ch){
-       case 'd': 
+       case 'd':
          menu(); // menu
          break;
-       case 'v': 
+       case 'v':
          consoleMode = (consoleMode +1) % 4;
          Console.println(consoleModeNames[consoleMode]);
-         break; 
+         break;
        case 'h':
          setNextState(STATE_PERI_FIND, 0); // press 'h' to drive home
-         break; 
+         break;
        case 't':
          setNextState(STATE_PERI_TRACK, 0); // press 'p' to track perimeter
          break;
        case 'l':
          bumperLeft = true; // press 'l' to simulate left bumper
          bumperLeftCounter++;
-         break; 
+         break;
        case 'r':
          bumperRight = true; // press 'r' to simulate right bumper
          bumperRightCounter++;
@@ -449,8 +450,8 @@ void Robot::readSerial() {
        case 's':
          lawnSensor = true; // press 's' to simulate lawn sensor
          lawnSensorCounter++;
-         break; 
-       case 'm':                  
+         break;
+       case 'm':
          motorMowEnable = !motorMowEnable; // press 'm' to toggle mower motor
          break;
        case 'c':
@@ -472,19 +473,18 @@ void Robot::readSerial() {
          imuUse = !imuUse;
          break;
        case '3':
-         setNextState(STATE_REMOTE,0); // press '3' to activate model RC         
-         break;          
+         setNextState(STATE_REMOTE,0); // press '3' to activate model RC
+         break;
        case '0':
          // press '0' for OFF
-         setNextState(STATE_OFF,0);                             
+         setNextState(STATE_OFF,0);
          break;
-       case '1':       
-         // press '1' for Automode         
+       case '1':
+         // press '1' for Automode
          motorMowEnable = true;
-         //motorMowModulate = false;                                           
-         setNextState(STATE_FORWARD,0);          
-         break; 
+         //motorMowModulate = false;
+         setNextState(STATE_FORWARD,0);
+         break;
      }
-  }    
+  }
 }
-

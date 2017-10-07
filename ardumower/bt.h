@@ -2,9 +2,9 @@
   Ardumower (www.ardumower.de)
   Copyright (c) 2013-2014 by Alexander Grau
   Copyright (c) 2013-2014 by Sven Gennat
- 
+
   Private-use only! (you need to ask for a commercial-use)
-  
+
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
@@ -17,9 +17,8 @@
 
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  
-  Private-use only! (you need to ask for a commercial-use)
 
+  Private-use only! (you need to ask for a commercial-use)
 */
 
 #ifndef BT_H
@@ -32,7 +31,7 @@
   BT automatic programmer
    *linvor
    *HC03/04/05/06
-   *ModiaTek FBT06/MBTV4 
+   *ModiaTek FBT06/MBTV4
 
  NOTE for HC05:           Connect KEY pin to 3.3V!
  NOTE for HC06/linvor:    Do NOT pair/connect (LED must be blinking)
@@ -49,7 +48,7 @@ class BluetoothConfig
     void writeBT(String s);
     void readBT();
     void writeReadBT(String s);
-    void setName(String name);    
+    void setName(String name);
     void setPin(int pin);
     void setBaudrate(long rate);
     boolean detectBaudrate(boolean quickBaudScan);
@@ -59,11 +58,10 @@ class BluetoothConfig
     char btType;
     char btData;
     String btResult;
-    long btRate;  
+    long btRate;
 };
 
 
 
 
 #endif
-
