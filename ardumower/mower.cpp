@@ -85,12 +85,12 @@ Mower::Mower(){
   dropcontact                = 1;          // contact 0-openers 1-closers                                                                              Dropsensor - Kontakt 0-Öffner - 1-Schließer betätigt gegen GND
 
   // ------ rain ------------------------------------
-  rainUse                    = 0;          // use rain sensor?
+  rainUse                    = 1;          // use rain sensor?
 
   // ------ sonar ------------------------------------
   sonarUse                   = 1;          // use ultra sonic sensor? (WARNING: robot will slow down, if enabled but not connected!)
-  sonarLeftUse               = 0;
-  sonarRightUse              = 0;
+  sonarLeftUse               = 1;
+  sonarRightUse              = 1;
   sonarCenterUse             = 1;
   sonarTriggerBelow          = 0;       // ultrasonic sensor trigger distance (0=off)
 	sonarSlowBelow             = 100;     // ultrasonic sensor slow down distance
